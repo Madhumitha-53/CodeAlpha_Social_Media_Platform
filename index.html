@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Mini Social Media</title></head>
+<body>
+  <h1>Posts</h1>
+  <div id="posts"></div>
+  <script>
+    fetch('http://localhost:5001/posts')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('posts').innerHTML = data.map(p => 
+          `<div><p>${p.content}</p><small>${new Date(p.timestamp).toLocaleString()}</small></div>`).join('');
+      });
+  </script>
+</body>
+</html>
